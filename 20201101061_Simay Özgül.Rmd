@@ -1,0 +1,68 @@
+---
+title: "FİNAL MARKDOWN"
+author: "Simay Özgül"
+date: "2023-02-17"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r data, include=FALSE}
+library(readr)
+``` 
+
+# Parfümler ve Kalıcılık Oranları
+## İçerik
+ 1. Parfümler İçin Veri Seti
+ 2. Kalıcılık Oranları ile Fiyat Karşılaştırması
+ 3. İnsanlar Bu Kodlardan Ne Kadar Haberdar?
+ 
+## Parfümler İçin Veri Seti
+_Parfümlerde kalıcılık oranları için EDP, EDT ve EDC kodları kullanılmaktadır. Buna bağlı olarak parfüm fiyatları, kalıcılıklarıyla orantılı olarak artış veya azalış göstermektedir. Aşağıda konuyla ilgili bir veri seti örneği yer almaktadır._
+
+| **Markalar**  | **Kod Adı**   | **Fiyat** |
+| ------------- |:-------------:| ---------:|
+| Calvin Klein  | EDP           |   1120 TL |
+| Farmasi       | EDP           |    182 TL |
+| Burberry      | EDP           |   1000 TL | 
+| Yves Rocher   | EDT           |    480 TL |
+| Aqua Di Polo  | EDT           |    300 TL |
+| Pierre Cardin | EDT           |    700 TL |
+| Tudors        | EDC           |    160 TL |
+| Mavi          | EDC           |    250 TL |
+| Morfose       | EDC           |     70 TL |
+
+
+## Kalıcılık Oranları İle Fiyat Karşılaştırması
+
+![Kalıcılık oranlarının fiyatlar üzerindeki etkisi](edpedtedc_kod.png "Kodlara Göre Ortalama Fiyatlar")
+***Bu grafik excel üzerinde düzenlenmiştir.***
+
+_Kalıcık oranlarına göre parfüm fiyatlarındaki değişim gözlenmek istenmiş ve sonucunda da görmüş olduğunuz tablo elde edilmiştir. EDP kodlu parfümlerin ortalama fiyatları 750 TL civarında seyrederken, EDT kodlularda bu durum ortalama 450 ve EDC'de ise yaklaşık 200 TL bandında olduğu söylenebilmektedir._
+
+## İnsanlar Bu Kodlardan Ne Kadar Haberdar?
+_Kadın ve erkeklere parfümlerin kodları hakkında soru yöneltildiğinde haberdar olup olmamaları ile ilgili şöyle bir dağılım elde edilmiştir;_
+
+
+```{r kadın ve erkek}
+df<- data.frame('biliyor'= c("Kadın" , "Erkek") ,
+                'sayı' = c(57,20))
+df
+```
+
+```{r df} 
+library(ggplot2)
+ ggplot(df, aes(x= biliyor , y= sayı, colours("grey")))+
+   geom_col()+
+   labs(
+    title = "Haberdarlık Durumu" ,
+    x = "" ,
+    y = "Bilen Kişi Sayısı",            
+  )
+```
+
+---
+_Tahmin edildiği üzere kozmetik ürün olan parfümlerin kalıcılık oranlarına hakim olan cinsiyet grubunun Kadınlar olduğu gözlemlenmiştir._
+
